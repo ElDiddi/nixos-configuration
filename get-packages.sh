@@ -1,2 +1,2 @@
 #!/bin/sh
-nix-store --query --requisites /run/current-system | cut -d- -f2- | sort -u
+nix-store --query --requisites /run/current-system ./.nix-profile | cut -d- -f2- | sort -u

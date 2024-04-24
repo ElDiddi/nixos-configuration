@@ -163,38 +163,46 @@
 
   home.packages = with pkgs; [
     alacritty
-    kitty
+    dmenu
     feh
-    killall
-    polkit_gnome
-    libva-utils
-    gsettings-desktop-schemas    
+    gnome.adwaita-icon-theme
+    gnome.gnome-calendar
+    gnome.gnome-maps    
+    gnome.nautilus
+    gnome.seahorse
     gnome.zenity
-    wlr-randr
-    wtype
-    ydotool
-    wl-clipboard
-    hyprland-protocols
-    hyprpicker    
-    hyprnome
-    hyprdim
-    swaybg   
-    keepmenu
-    pinentry-gnome3
-    wev
     grim
-    slurp
-    libsForQt5.qt5.qtwayland
+    gsettings-desktop-schemas    
+    hyprdim
+    hyprland-protocols
+    hyprnome
+    hyprpicker    
+    keepmenu
+    killall
+    kitty
     libsForQt5.kio-extras
+    libsForQt5.qt5.qtwayland
+    libva-utils
+    pamixer
+    pavucontrol
+    pinentry-gnome3
+    polkit_gnome
     qt6.qtwayland   
-    xdg-utils
+    rofi
+    shared-mime-info
+    slurp
+    swaybg   
+    tesseract4
+    wev
+    wl-clipboard
+    wlr-randr
+    wlsunset
+    wtype
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
-    wlsunset
-    pavucontrol
-    pamixer
-    tesseract4
+    xdg-utils
+    ydotool
     (pkgs.writeScriptBin "screenshot-ocr" ''
       #!/bin/sh
       imgname="/tmp/screenshot-ocr-$(date +%Y%m%d%H%M%S).png"

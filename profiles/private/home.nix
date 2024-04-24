@@ -26,45 +26,32 @@
 
   home.packages = (with pkgs; [
     # Core
-    alacritty
     brave
-    dmenu
-    rofi
     syncthing
-    dolphin
-    vulkan-tools
-    nfs-utils
-    mkinitcpio-nfs-utils
 
     # Office
     libreoffice-fresh
     mate.atril
     openboard
-    xournalpp
-    gnome.adwaita-icon-theme
-    shared-mime-info
-    #gnome.nautilus
-    gnome.gnome-calendar
-    gnome.seahorse
-    gnome.gnome-maps
     thunderbird
     vscode
+    xournalpp
 
     # Media
-    libmediainfo
-    gimp
-    vlc
-    #mpv
     #mediainfo
     #mediainfo-gui
+    #mpv
+    gimp
+    libmediainfo
+    vlc
 
     # Various dev packages
-    texinfo
-    libffi
-    zlib
     glib
+    libffi
     nodePackages.ungit
+    texinfo
     ventoy
+    zlib
   ]);
 
   services.syncthing.enable = true;

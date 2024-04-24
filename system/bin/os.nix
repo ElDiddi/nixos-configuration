@@ -67,13 +67,13 @@ let myScript = ''
         if [ "$#" -gt 1 ]; then
           echo "Warning: The 'packages' command has no subcommands (no $2 subcommand)";
         fi
-          ''+userSettings.dotfilesDir+''/get-packages.sh;;
+          ''+userSettings.dotfilesDir+''/get-packages.sh;
         exit 0;
       fi
     '';
 in
 {
   environment.systemPackages = [
-    (pkgs.writeScriptBin "phoenix" myScript)
+    (pkgs.writeScriptBin "os" myScript)
   ];
 }

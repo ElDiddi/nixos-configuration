@@ -124,7 +124,7 @@
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-            ./system/bin/phoenix.nix
+            ./system/bin/os.nix
           ]; # load configuration.nix from selected PROFILE
           specialArgs = {
             # pass config variables from above

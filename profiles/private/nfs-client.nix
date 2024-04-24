@@ -1,5 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 {
+    environment.systemPackages = with pkgs; [
+        nfs-utils
+        mkinitcpio-nfs-utils
+    ];
+
     # NFS usage
     services.rpcbind.enable = true;
     fileSystems."/home/ld/Archive" = {

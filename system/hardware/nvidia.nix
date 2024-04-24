@@ -1,6 +1,11 @@
 { pkgs, config, libs, ... }:
 
 {
+
+  environment.systemPackages = with pkgs; [
+    vulkan-tools
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   # Load nvidia driver for Xorg and Wayland
