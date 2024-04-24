@@ -9,7 +9,7 @@ if [ $# -gt 0 ]
   else
     SCRIPT_DIR=~/.dotfiles
 fi
-#nix-shell -p git --command "git clone https://gitlab.com/librephoenix/nixos-config $SCRIPT_DIR"
+nix-shell -p git --command "git clone https://github.com/ElDiddi/nixos-configuration $SCRIPT_DIR"
 
 # Generate hardware config for new system
 sudo nixos-generate-config --show-hardware-config > $SCRIPT_DIR/system/hardware-configuration.nix
@@ -21,7 +21,7 @@ fi
 $EDITOR $SCRIPT_DIR/flake.nix;
 
 # Permissions for files that should be owned by root
-# sudo $SCRIPT_DIR/harden.sh $SCRIPT_DIR;
+sudo $SCRIPT_DIR/harden.sh $SCRIPT_DIR;
 
 # Rebuild system
 sudo nixos-rebuild switch --flake $SCRIPT_DIR#system;
