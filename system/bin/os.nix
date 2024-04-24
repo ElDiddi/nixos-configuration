@@ -67,7 +67,7 @@ let myScript = ''
         if [ "$#" -gt 1 ]; then
           echo "Warning: The 'packages' command has no subcommands (no $2 subcommand)";
         fi
-          nix-store --query --requisites /run/current-system | cut -d- -f2- | sort -u;
+          ''+userSettings.dotfilesDir+''/get-packages.sh;;
         exit 0;
       fi
     '';
