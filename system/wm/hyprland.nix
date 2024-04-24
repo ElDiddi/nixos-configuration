@@ -2,7 +2,7 @@
 
 {
   # Import wayland config
-  imports = [ 
+  imports = [
     ./wayland.nix
     ./pipewire.nix
     ./dbus.nix

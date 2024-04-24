@@ -7,8 +7,8 @@
     killall
     libnotify
     brightnessctl
-    gnugrep    
-    bottom 
+    gnugrep
+    bottom
     ripgrep
     rsync
     unzip
@@ -25,7 +25,7 @@
     fd
     bc
     direnv
-    nix-direnv    
+    nix-direnv
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
@@ -35,6 +35,6 @@
       else
           nmcli n on
       fi
-    '')    
+    '')
   ];
 }

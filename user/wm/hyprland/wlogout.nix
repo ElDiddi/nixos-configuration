@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     wlogout
   ];
-  
+
   programs.wlogout = {
-    enable = true;   
+    enable = true;
     layout = [
       {
         label = "lock";

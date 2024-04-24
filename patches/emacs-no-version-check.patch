@@ -4,7 +4,7 @@ diff -crB nixpkgs/pkgs/build-support/emacs/generic.nix nixpkgs-patched/pkgs/buil
 ***************
 *** 3,9 ****
   { lib, stdenv, emacs, texinfo, writeText, gcc, ... }:
-  
+
   { pname
 ! , version
   , buildInputs ? []
@@ -12,7 +12,7 @@ diff -crB nixpkgs/pkgs/build-support/emacs/generic.nix nixpkgs-patched/pkgs/buil
   , meta ? {}
 --- 3,9 ----
   { lib, stdenv, emacs, texinfo, writeText, gcc, ... }:
-  
+
   { pname
 ! , version ? null
   , buildInputs ? []
@@ -21,17 +21,17 @@ diff -crB nixpkgs/pkgs/build-support/emacs/generic.nix nixpkgs-patched/pkgs/buil
 ***************
 *** 20,26 ****
   in
-  
+
   stdenv.mkDerivation (finalAttrs: ({
 !   name = "emacs-${pname}-${finalAttrs.version}";
-  
+
     unpackCmd = ''
       case "$curSrc" in
 --- 20,26 ----
   in
-  
+
   stdenv.mkDerivation (finalAttrs: ({
 !   name = "emacs-${pname}${lib.optionalString (version != null) "-${version}"}";
-  
+
     unpackCmd = ''
       case "$curSrc" in

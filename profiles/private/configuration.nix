@@ -45,7 +45,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath; # does nothing if running bios rather than uefi
   boot.loader.grub.enable = false;
-  
+
   # Networking
   networking.hostName = systemSettings.hostname; # Define your hostname.
   networking.networkmanager.enable = true; # Use networkmanager

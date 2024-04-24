@@ -41,7 +41,7 @@ in
       greeters.slick.enable = true;
       greeters.slick.theme.name = myLightDMTheme;
   };
-  
+
   stylix.targets.console.enable = true;
   stylix.targets.chromium.enable = true;
 

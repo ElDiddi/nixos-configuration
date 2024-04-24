@@ -4,9 +4,9 @@
   home.packages = with pkgs; [
     swaylock
   ];
-  
+
   programs.swaylock = {
-    enable = true;   
+    enable = true;
     settings = {
       daemonize = true;
       show-failed-attempts = true;

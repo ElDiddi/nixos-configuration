@@ -36,7 +36,7 @@
   # See https://wiki.hyprland.org/Configuring/Monitors/
   monitor = ,preferred,auto,auto
 
- 
+
   # █░░ ▄▀█ █░█ █▄░█ █▀▀ █░█
   # █▄▄ █▀█ █▄█ █░▀█ █▄▄ █▀█
 
@@ -58,8 +58,8 @@
   exec-once = hypridle
   exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p
   exec = ~/.swaybg-stylix
-  exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + '' 
- 
+  exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
+
 
 
   # █░░ ▄▀█ █▄█ █▀█ █░█ ▀█▀ █▀
@@ -70,13 +70,13 @@
     cursor_inactive_timeout = 30
     border_size = 4
     no_cursor_warps = false
-    col.active_border = 0xfff38ba8 
-    col.inactive_border = 0x331e1e2e 
+    col.active_border = 0xfff38ba8
+    col.inactive_border = 0x331e1e2e
     resize_on_border = true
     gaps_in = 7
     gaps_out = 7
   }
- 
+
   decoration {
     rounding = 8
     blur {
@@ -88,13 +88,13 @@
       brightness = 0.8
     }
   }
-  
-  
+
+
   # █▀▀ █▄░█ █░█
   # ██▄ █░▀█ ▀▄▀
-  
+
   # See https://wiki.hyprland.org/Configuring/Environment-variables/
-  
+
   #env = PATH,$PATH:$scrPath
   env = XDG_CURRENT_DESKTOP,Hyprland
   env = XDG_SESSION_TYPE,wayland
@@ -105,13 +105,13 @@
   env = QT_AUTO_SCREEN_SCALE_FACTOR,1
   env = MOZ_ENABLE_WAYLAND,1
   env = GDK_SCALE,1
-  
-  
+
+
   # █ █▄░█ █▀█ █░█ ▀█▀
   # █ █░▀█ █▀▀ █▄█ ░█░
- 
+
   # See https://wiki.hyprland.org/Configuring/Variables/
- 
+
   input {
     kb_layout = de
     kb_options = caps:escape
@@ -132,7 +132,7 @@
 
   # █▀▄▀█ █ █▀ █▀▀
   # █░▀░█ █ ▄█ █▄▄
- 
+
   # See https://wiki.hyprland.org/Configuring/Variables/
 
   misc {
@@ -145,7 +145,7 @@
 
   xwayland {
     force_zero_scaling = true
-  } 
+  }
 
 
   # █▀ █▀█ █░█ █▀█ █▀▀ █▀▀
@@ -166,17 +166,18 @@
     dmenu
     feh
     gnome.adwaita-icon-theme
+    gnome.file-roller
     gnome.gnome-calendar
-    gnome.gnome-maps    
+    gnome.gnome-maps
     gnome.nautilus
     gnome.seahorse
     gnome.zenity
     grim
-    gsettings-desktop-schemas    
+    gsettings-desktop-schemas
     hyprdim
     hyprland-protocols
     hyprnome
-    hyprpicker    
+    hyprpicker
     keepmenu
     killall
     kitty
@@ -187,11 +188,11 @@
     pavucontrol
     pinentry-gnome3
     polkit_gnome
-    qt6.qtwayland   
+    qt6.qtwayland
     rofi
     shared-mime-info
     slurp
-    swaybg   
+    swaybg
     tesseract4
     wev
     wl-clipboard
@@ -257,4 +258,3 @@
     '')
   ];
 }
- 

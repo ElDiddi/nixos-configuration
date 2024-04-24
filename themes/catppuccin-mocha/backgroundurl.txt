@@ -1,1 +1,1 @@
-https://images7.alphacoders.com/126/1266081.jpg
+https://raw.githubusercontent.com/ElDiddi/nixos-configuration-extras/main/wallpapers/hyprland-wall2.jpg

@@ -1,14 +1,14 @@
 { config, pkgs, systemSettings, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./pipewire.nix
     ./dbus.nix
     ./gnome-keyring.nix
     ./fonts.nix
   ];
-  
-  environment.systemPackages = with pkgs; [ 
+
+  environment.systemPackages = with pkgs; [
     wayland waydroid (
       sddm-chili-theme.override {
         themeConfig = {

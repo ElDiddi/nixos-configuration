@@ -72,7 +72,7 @@
       XDG_ARCHIVE_DIR = "${config.home.homeDirectory}/Archive";
       XDG_VM_DIR = "${config.home.homeDirectory}/Machines";
       XDG_GAME_DIR = "${config.home.homeDirectory}/Media/Games";
-      XDG_GAME_SAVE_DIR = "${config.home.homeDirectory}/Media/Game Saves";      
+      XDG_GAME_SAVE_DIR = "${config.home.homeDirectory}/Media/Game Saves";
     };
   };
   xdg.mime.enable = true;
