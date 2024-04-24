@@ -7,7 +7,6 @@ let
     cat = "bat";
     htop = "btm";
     fd = "fd -Lu";
-    neofetch = "fastfetch";
     fetch = "fastfetch";
     gitfetch = "onefetch";
   };

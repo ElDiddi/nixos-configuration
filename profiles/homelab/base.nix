@@ -78,12 +78,11 @@
 
   services.haveged.enable = true;
 
-  # I use zsh btw
+  # zsh config
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
 
   # It is ok to leave this unchanged for compatibility purposes
-  system.stateVersion = "22.11";
-
+  system.stateVersion = "23.11";
 }

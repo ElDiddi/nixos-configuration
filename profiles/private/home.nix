@@ -19,6 +19,9 @@
               ../../user/app/virtualization/virtualization.nix # Virtual machines
               ../../user/style/stylix.nix # Styling and themes
               ../../user/lang/cc/cc.nix # C and C++ tools
+              ../../user/lang/rust/rust.nix # rust tools
+              ../../user/lang/python/python.nix # python tools
+              ../../user/lang/python/python-packages.nix # python tools
               ../../user/hardware/bluetooth.nix # Bluetooth
             ];
 

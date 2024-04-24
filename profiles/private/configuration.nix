@@ -68,13 +68,16 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+    cryptsetup
+    fzf
+    fzf-zsh
+    git
+    home-manager
+    oh-my-zsh
     vim
     wget
-    zsh
-    git
-    cryptsetup
-    home-manager
     wpa_supplicant
+    zsh
   ];
 
   # User account
@@ -86,10 +89,18 @@
       uid = 1000;
   };
 
-  # I use zsh btw
+  # zsh config
   environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
   programs.zsh.enable = true;
+  # fzf integration for zsh
+  programs.fzf.keybindings = true;
+  programs.fzf.fuzzyCompletion = true;
+
+  programs.zsh = {
+    ohMyZsh.enable = true;
+    ohMyZsh.plugins = [ "fzf" "z" "rust" ];
+  };
 
   fonts.fontDir.enable = true;
 
