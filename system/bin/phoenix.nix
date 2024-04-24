@@ -63,6 +63,12 @@ let myScript = ''
           sudo nix-collect-garbage --delete-older-than 30d;
           nix-collect-garbage --delete-older-than 30d;
         fi
+      elif [ "$1" = "packages" ]; then
+        if [ "$#" -gt 1 ]; then
+          echo "Warning: The 'packages' command has no subcommands (no $2 subcommand)";
+        fi
+          nix-store --query --requisites /run/current-system | cut -d- -f2- | sort -u;
+        exit 0;
       fi
     '';
 in

@@ -186,7 +186,7 @@
     slurp
     libsForQt5.qt5.qtwayland
     libsForQt5.kio-extras
-    qt6.qtwayland
+    qt6.qtwayland   
     xdg-utils
     xdg-desktop-portal
     xdg-desktop-portal-gtk
