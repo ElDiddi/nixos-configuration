@@ -41,9 +41,6 @@
     xournalpp
 
     # Media
-    #mediainfo
-    #mediainfo-gui
-    #mpv
     gimp
     libmediainfo
     vlc

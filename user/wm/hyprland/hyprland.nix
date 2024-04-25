@@ -156,7 +156,6 @@
   source = ~/.dotfiles/user/wm/hyprland/keybindings.conf
   source = ~/.dotfiles/user/wm/hyprland/windowrules.conf
   source = ~/.dotfiles/user/wm/hyprland/monitors.conf # initially empty, to be configured by user and remains static
-  source = ~/.dotfiles/user/wm/hyprland/nvidia.conf # auto sourced vars for nvidia
     '';
     xwayland = { enable = true; };
     systemd.enable = true;
