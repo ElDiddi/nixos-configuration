@@ -462,6 +462,12 @@
           "margin": 50,
           "unfocus": "hide",
           "animation": "fromTop"
+        },
+        "networkmanager": {
+          "command": "networkmanager_dmenu",
+          "margin": 50,
+          "unfocus": "hide",
+          "animation": "fromTop"
         }
       }
     }

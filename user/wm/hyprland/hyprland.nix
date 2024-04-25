@@ -54,10 +54,10 @@
 
   exec-once = pypr
   exec-once = ydotoold
-  #exec-once = STEAM_FRAME_FORCE_CLOSE=1 steam -silent
-  #exec-once = GOMAXPROCS=1 syncthing --no-browser
-  exec-once = hypridle
-  exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p
+  # exec-once = STEAM_FRAME_FORCE_CLOSE=1 steam -silent
+  # exec-once = GOMAXPROCS=1 syncthing --no-browser
+  # exec-once = hypridle
+  # exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p
   exec = ~/.swaybg-stylix
   exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
 

@@ -65,7 +65,7 @@
     }
 
     button:hover {
-        background-color: #f5c2e7;
+        background-color: #'' + config.lib.stylix.colors.base02 + '';
         background-size: 20%;
         border-radius: 25px;
         animation: gradient_f 20s ease-in infinite;
@@ -93,25 +93,25 @@
     }
 
     #lock {
-        background-image: image(url("/home/ld/.dotfiles/themes/wlogout/icons/lock_white.png"));
+        background-image: image(url("/home/''+userSettings.username+''/.dotfiles/themes/wlogout/icons/lock_white.png"));
         border-radius: 25px 0px 0px 0px;
         margin : 30px 0px 0px 30px;
     }
 
     #logout {
-        background-image: image(url("/home/ld/.dotfiles/themes/wlogout/icons/logout_white.png"));
+        background-image: image(url("/home/''+userSettings.username+''/.dotfiles/themes/wlogout/icons/logout_white.png"));
         border-radius: 0px 0px 0px 25px;
         margin : 0px 0px 30px 30px;
     }
 
     #shutdown {
-        background-image: image(url("/home/ld/.dotfiles/themes/wlogout/icons/shutdown_white.png"));
+        background-image: image(url("/home/''+userSettings.username+''/.dotfiles/themes/wlogout/icons/shutdown_white.png"));
         border-radius: 0px 25px 0px 0px;
         margin : 30px 30px 0px 0px;
     }
 
     #reboot {
-        background-image: image(url("/home/ld/.dotfiles/themes/wlogout/icons/reboot_white.png"));
+        background-image: image(url("/home/''+userSettings.username+''/.dotfiles/themes/wlogout/icons/reboot_white.png"));
         border-radius: 0px 0px 25px 0px;
         margin : 0px 30px 30px 0px;
     }

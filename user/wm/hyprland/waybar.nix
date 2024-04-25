@@ -1,310 +1,255 @@
-{ config, pkgs, systemSettings, userSettings, ... }:
+{ config, systemSettings, ... }:
 
 {
-  home.packages = with pkgs; [
-
-  ];
-
   programs.waybar = {
     enable = true;
     settings = {
       mainBar = {
         layer = "top";
         position = "top";
-        height = 35;
-        margin = "7 7 3 7";
-        spacing = 2;
+        mod = "dock";
+        exclusive = true;
+        passthrough = false;
+        gtk-layer-shell = true;
+        reload_style_on_change = true;
+        height = 31;
 
-        modules-left = [ "custom/os" "custom/hyprprofile" "battery" "backlight" "keyboard-state" "pulseaudio" "cpu" "memory" ];
-        modules-center = [ "hyprland/workspaces" ];
-        modules-right = [ "idle_inhibitor" "tray" "clock" ];
+        output = [ "DP-3" ]; # set waybar to main monitor only
+
+        modules-left = [ "custom/os" ];
+        modules-center = [ ];
+        modules-right = ["network" "pulseaudio" "pulseaudio#microphone" "clock"];
 
         "custom/os" = {
-          "format" = " {} ";
-          "exec" = ''echo "" '';
-          "on-click" = "wlogout --layout ~/.config/wlogout/layout -css ~/.config/wlogout/style.css -b 2 -P";
-          "interval" = 86400;
-          "tooltip" = true;
-        };
-        "custom/hyprprofile" = {
-          "format" = "   {}";
-          "exec" = ''cat ~/.hyprprofile'';
-          "interval" = 3;
-          "on-click" = "hyprprofile-dmenu";
-        };
-        "keyboard-state" = {
-          "numlock" = true;
-          "format" = " {icon} ";
-          "format-icons" = {
-            "locked" = "󰎠";
-            "unlocked" = "󱧓";
-          };
-        };
-        "hyprland/workspaces" = {
-          "format" = "{icon}";
-          "format-icons" = {
-            "1" = "󱚌";
-            "2" = "󰖟";
-            "3" = "";
-            "4" = "󰎄";
-            "5" = "󰋩";
-            "6" = "";
-            "7" = "󰄖";
-            "8" = "󰑴";
-            "9" = "󱎓";
-            "scratch_term" = "_";
-            "scratch_ranger" = "_󰴉";
-            "scratch_musikcube" = "_";
-            "scratch_btm" = "_";
-            "scratch_pavucontrol" = "_󰍰";
-          };
-          "on-click" = "activate";
-          "on-scroll-up" = "hyprctl dispatch workspace e+1";
-          "on-scroll-down" = "hyprctl dispatch workspace e-1";
-          "ignore-workspaces" = ["scratch" "-"];
-        };
-
-        "idle_inhibitor" = {
-          format = "{icon}";
-          format-icons = {
-            activated = "󰅶";
-            deactivated = "󰾪";
-          };
+          format = " {} ";
+          exec = ''echo "" '';
+          on-click = "wlogout --layout ~/.config/wlogout/layout -css ~/.config/wlogout/style.css -b 2 -P";
+          interval = 86400;
+          tooltip = true;
         };
         tray = {
-          "spacing" = 10;
+          icon-size = 15;
+          spacing = 10;
         };
         clock = {
-          "interval" = 1;
-          "format" = "{:%a %Y-%m-%d %I:%M:%S %p}";
-          "timezone" = ''+systemSettings.timezone+'';
-          "tooltip-format" = ''
+          interval = 60;
+          format = " {0:%H:%M} 󰸗 {0:%a, %b %e}";
+          timezone = ''+systemSettings.timezone+'';
+          tooltip-format = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
         };
-        cpu = {
-          "format" = "{usage}% ";
-        };
-        memory = { "format" = "{}% "; };
-        backlight = {
-          "format" = "{percent}% {icon}";
-          "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
-        };
-        battery = {
-          "states" = {
-            "good" = 95;
-            "warning" = 30;
-            "critical" = 15;
-          };
-          "format" = "{capacity}% {icon}";
-          "format-charging" = "{capacity}% ";
-          "format-plugged" = "{capacity}% ";
-          #"format-good" = ""; # An empty format will hide the module
-          #"format-full" = "";
-          "format-icons" = [ "" "" "" "" "" ];
-        };
         pulseaudio = {
-          "scroll-step" = 1;
-          "format" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth" = "{volume}% {icon}  {format_source}";
-          "format-bluetooth-muted" = "󰸈 {icon}  {format_source}";
-          "format-muted" = "󰸈 {format_source}";
-          "format-source" = "{volume}% ";
-          "format-source-muted" = " ";
-          "format-icons" = {
-            "headphone" = "";
-            "hands-free" = "";
-            "headset" = "";
-            "phone" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = [ "" "" "" ];
+          format = "{icon} {volume}%";
+          tooltip = false;
+          format-muted = " Muted";
+          on-click = "pamixer -t";
+          on-click-right = "pypr toggle volume && hyprctl dispatch bringactivetotop";
+          on-scroll-up = "pamixer -i 5";
+          on-scroll-down = "pamixer -d 5";
+          scroll-step= 5;
+          format-icons = {
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = ["" "" ""];
           };
-          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
+        };
+        "pulseaudio#microphone" = {
+          format = "{format_source}";
+          format-source = " {volume}%";
+          format-source-muted = " Muted";
+          on-click = "pamixer --default-source -t";
+          on-click-right = "pypr toggle volume && hyprctl dispatch bringactivetotop";
+          on-scroll-up = "pamixer --default-source -i 5";
+          on-scroll-down = "pamixer --default-source -d 5";
+          scroll-step = 5;
+        };
+        network = {
+          tooltip = true;
+          format-wifi = " ";
+          rotate = 0;
+          format-ethernet = "󰈀 ";
+          tooltip-format = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>";
+          format-linked = "󰈀 {ifname} (No IP)";
+          format-disconnected = "󰖪 ";
+          tooltip-format-disconnected = "Disconnected";
+          format-alt = "<span foreground='#b4befe'> {bandwidthDownBytes}</span> <span foreground='#b4befe'> {bandwidthUpBytes}</span>";
+          interval = 2;
+          on-click-right = "networkmanager_dmenu && hyprctl dispatch bringactivetotop";
         };
       };
     };
     style = ''
-      * {
-          /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, ''+userSettings.font+'';
-          font-size: 18px;
+    * {
+        border: none;
+        border-radius: 0px;
+        font-family: JetBrainsMono Nerd Font;
+        font-weight: bold;
+        font-size: 14px;
+        min-height: 0;
+        transition: 0.3s;
       }
 
       window#waybar {
-          background-color: #'' + config.lib.stylix.colors.base00 + '';
-          opacity: 0.75;
-          border-radius: 8px;
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          transition-property: background-color;
-          transition-duration: .2s;
+        background: rgba(21, 18, 27, 0);
+        color: #cdd6f4;
       }
 
-      window > box {
-          border-radius: 8px;
-          opacity: 0.94;
-      }
-
-      window#waybar.hidden {
-          opacity: 0.2;
-      }
-
-      button {
-          border: none;
-      }
-
-      #custom-hyprprofile {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
-
-      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-      button:hover {
-          background: inherit;
+      tooltip {
+        background: #1e1e2e;
+        border-radius: 10px;
+        border-width: 1.5px;
+        border-style: solid;
+        border-color: #11111b;
+        transition: 0.3s;
       }
 
       #workspaces button {
-          padding: 0 7px;
-          background-color: transparent;
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
-
-      #workspaces button:hover {
-          color: #'' + config.lib.stylix.colors.base07 + '';
+        padding: 5px;
+        color: #313244;
+        margin-right: 5px;
       }
 
       #workspaces button.active {
-          color: #'' + config.lib.stylix.colors.base08 + '';
+        color: #a6adc8;
       }
 
       #workspaces button.focused {
-          color: #'' + config.lib.stylix.colors.base0A + '';
-      }
-
-      #workspaces button.visible {
-          color: #'' + config.lib.stylix.colors.base05 + '';
+        color: #a6adc8;
+        background: #eba0ac;
+        border-radius: 20px;
       }
 
       #workspaces button.urgent {
-          color: #'' + config.lib.stylix.colors.base09 + '';
+        color: #11111b;
+        background: #a6e3a1;
+        border-radius: 20px;
       }
 
+      #workspaces button:hover {
+        background: #11111b;
+        color: #cdd6f4;
+        border-radius: 20px;
+      }
+
+      #custom-power_profile,
+      #custom-weather,
+      #window,
       #clock,
       #battery,
-      #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #backlight,
-      #network,
       #pulseaudio,
-      #wireplumber,
-      #custom-media,
+      #network,
+      #bluetooth,
+      #temperature,
+      #workspaces,
       #tray,
-      #mode,
-      #idle_inhibitor,
-      #scratchpad,
-      #mpd {
-          padding: 0 10px;
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          border: none;
-          border-radius: 8px;
+      #backlight {
+        background: #1e1e2e;
+        opacity: 0.8;
+        padding: 0px 10px;
+        margin: 0;
+        margin-top: 5px;
+        border: 1px solid #181825;
       }
 
-      #window,
-      #workspaces {
-          margin: 0 4px;
+      #temperature {
+        border-radius: 20px 0px 0px 20px;
       }
 
-      /* If workspaces is the leftmost module, omit left margin */
-      .modules-left > widget:first-child > #workspaces {
-          margin-left: 0;
-      }
-
-      /* If workspaces is the rightmost module, omit right margin */
-      .modules-right > widget:last-child > #workspaces {
-          margin-right: 0;
-      }
-
-      #clock {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
-
-      #battery {
-          color: #'' + config.lib.stylix.colors.base0B + '';
-      }
-
-      #battery.charging, #battery.plugged {
-          color: #'' + config.lib.stylix.colors.base0C + '';
-      }
-
-      @keyframes blink {
-          to {
-              background-color: #'' + config.lib.stylix.colors.base07 + '';
-              color: #'' + config.lib.stylix.colors.base00 + '';
-          }
-      }
-
-      #battery.critical:not(.charging) {
-          background-color: #'' + config.lib.stylix.colors.base08 + '';
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-      }
-
-      label:focus {
-          background-color: #'' + config.lib.stylix.colors.base00 + '';
-      }
-
-      #cpu {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
-
-      #memory {
-          color: #'' + config.lib.stylix.colors.base0E + '';
-      }
-
-      #disk {
-          color: #'' + config.lib.stylix.colors.base0F + '';
+      #temperature.critical {
+        color: #eba0ac;
       }
 
       #backlight {
-          color: #'' + config.lib.stylix.colors.base0A + '';
+        border-radius: 20px 0px 0px 20px;
+        padding-left: 7px;
       }
 
-      label.numlock {
-          color: #'' + config.lib.stylix.colors.base04 + '';
+      #tray {
+        border-radius: 20px;
+        margin-right: 5px;
+        padding: 0px 4px;
       }
 
-      label.numlock.locked {
-          color: #'' + config.lib.stylix.colors.base0F + '';
+      #workspaces {
+        background: #1e1e2e;
+        border-radius: 20px;
+        margin-left: 5px;
+        padding-right: 0px;
+        padding-left: 5px;
+      }
+
+      #custom-power_profile {
+        color: #a6e3a1;
+        border-left: 0px;
+        border-right: 0px;
+      }
+
+      #custom-os {
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        margin-top: 4px;
+        font-size: 18px;
+      }
+
+      #window {
+        border-radius: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+
+      #clock {
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        border-radius: 20px;
+        margin-left: 5px;
+        border-right: 0px;
+        transition: 0.3s;
+        padding-left: 7px;
+      }
+
+      #network {
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        border-radius: 20px 0px 0px 20px;
+        border-left: 0px;
+        border-right: 0px;
+      }
+
+      #bluetooth {
+        color: #89b4fa;
+        border-radius: 20px;
+        margin-right: 10px
       }
 
       #pulseaudio {
-          color: #'' + config.lib.stylix.colors.base0C + '';
+        color: #89b4fa;
+        border-left: 0px;
+        border-right: 0px;
       }
 
-      #pulseaudio.muted {
-          color: #'' + config.lib.stylix.colors.base04 + '';
+      #pulseaudio.microphone {
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        border-left: 0px;
+        border-right: 0px;
+        border-radius: 0px 20px 20px 0px;
+        margin-right: 5px;
+        padding-right: 8px;
       }
 
-      #tray > .passive {
-          -gtk-icon-effect: dim;
+      #battery {
+        color: #a6e3a1;
+        border-radius: 0 20px 20px 0;
+        margin-right: 5px;
+        border-left: 0px;
       }
 
-      #tray > .needs-attention {
-          -gtk-icon-effect: highlight;
+      #custom-weather {
+        border-radius: 20px;
+        border-right: 0px;
+        margin-left: 0px;
       }
-
-      #idle_inhibitor {
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
-
-      #idle_inhibitor.activated {
-          color: #'' + config.lib.stylix.colors.base0F + '';
-      }
-      '';
+    '';
   };
 }

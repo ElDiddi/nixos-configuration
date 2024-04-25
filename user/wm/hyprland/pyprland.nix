@@ -5,64 +5,34 @@
     pyprland
   ];
 
-  home.file.".config/hypr/pyprland.json".text = ''
-    {
-      "pyprland": {
-        "plugins": ["scratchpads", "magnify", "expose"]
-      },
-      "scratchpads": {
-        "term": {
-          "command": "alacritty --class scratchpad",
-          "margin": 50
-        },
-        "ranger": {
-          "command": "kitty --class scratchpad -e ranger",
-          "margin": 50
-        },
-        "pavucontrol": {
-          "command": "pavucontrol",
-          "margin": 50,
-          "unfocus": "hide",
-          "animation": "fromTop"
-        }
-      }
-    }
+  home.file.".config/hypr/pyprland.toml".text = ''
+    [pyprland]
+    plugins = [
+      "expose",
+      "magnify",
+      "scratchpads",
+    ]
+
+    [scratchpads.term]
+    animation = "fromTop"
+    command = "kitty --class kitty-dropterm"
+    class = "kitty-dropterm"
+    lazy = false
+    size = "75% 60%"
+
+    [scratchpads.ranger]
+    animation = "fromTop"
+    command = "kitty --class kitty-ranger -e ranger"
+    class = "kitty-ranger"
+    lazy = false
+    size = "75% 60%"
+
+    [scratchpads.volume]
+    animation = "fromTop"
+    command = "pavucontrol -t 3"
+    class = "pavucontrol"
+    lazy = true
+    size = "40% 50%"
+    unfocused = "hide"
   '';
-  /*
-  home.file.".config/hypr/pyprland.json".text = ''
-    {
-      "pyprland": {
-        "plugins": ["scratchpads", "magnify", "expose"]
-      },
-      "scratchpads": {
-        "term": {
-          "command": "alacritty --class scratchpad",
-          "margin": 50
-        },
-        "ranger": {
-          "command": "kitty --class scratchpad -e ranger",
-          "margin": 50
-        },
-        "numbat": {
-          "command": "alacritty --class scratchpad -e numbat",
-          "margin": 50
-        },
-        "musikcube": {
-          "command": "alacritty --class scratchpad -e musikcube",
-          "margin": 50
-        },
-        "btm": {
-          "command": "alacritty --class scratchpad -e btm",
-          "margin": 50
-        },
-        "pavucontrol": {
-          "command": "pavucontrol",
-          "margin": 50,
-          "unfocus": "hide",
-          "animation": "fromTop"
-        }
-      }
-    }
-  '';
-  */
 }

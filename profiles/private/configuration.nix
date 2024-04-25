@@ -102,8 +102,6 @@
     ohMyZsh.plugins = [ "fzf" "z" "rust" ];
   };
 
-  fonts.fontDir.enable = true;
-
   xdg.portal = {
     enable = true;
     extraPortals = [
