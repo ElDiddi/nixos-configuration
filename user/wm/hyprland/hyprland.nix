@@ -15,6 +15,7 @@
     ./fuzzel.nix
     ./udiskie.nix
     ./wlogout.nix
+    ./swappy.nix
     #./swaylock.nix
   ];
 

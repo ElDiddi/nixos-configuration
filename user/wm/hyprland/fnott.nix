@@ -5,6 +5,7 @@
     fnott
   ];
 
+  # Notification daemon
   services.fnott.enable = true;
   services.fnott.settings = {
     main = {

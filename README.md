@@ -8,11 +8,15 @@
 
 - Desktop Manager: wayland (nvidia)
 - Window Manager: hyprland
-  - hyprlock
+  - fnott     # notification daemon
+  - fuzzel    # application launcher
+  - hyprlock  # screen locking utility
   - rofi
-  - udiskie
-  - waybar
-  - wlogout
+  - stylix    # theme manager
+  - swappy    # screenshot tool
+  - udiskie   # removable disk automounter
+  - waybar    # wyland bar
+  - wlogout   # logout menu
 - Theme: catppuccin-mocha
 - Terminal: alacritty (kitty fallback)
 - Shell: zsh - fzf, z
