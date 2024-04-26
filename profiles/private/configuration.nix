@@ -21,6 +21,7 @@
     ../../system/security/firewall.nix
     ../../system/security/automount.nix
     ../../system/style/stylix.nix
+    ../../system/app/gaming.nix
     ./nfs-client.nix
   ];
 
@@ -73,6 +74,7 @@
     fzf-zsh
     git
     home-manager
+    lshw
     oh-my-zsh
     vim
     wget

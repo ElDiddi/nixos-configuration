@@ -29,8 +29,7 @@
 
   home.packages = (with pkgs; [
     # Core
-    brave
-    syncthing
+    google-chrome # for vulkan and webgpu tests
 
     # Office
     libreoffice-fresh
@@ -45,6 +44,10 @@
     libmediainfo
     vlc
 
+    # Voice
+    discord
+    teamspeak_client
+
     # Various dev packages
     glib
     libffi
@@ -53,8 +56,6 @@
     ventoy
     zlib
   ]);
-
-  services.syncthing.enable = true;
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -84,5 +85,9 @@
     SPAWNEDITOR = userSettings.spawnEditor;
     TERM = userSettings.term;
     BROWSER = userSettings.browser;
+
+    SDL_VIDEODRIVER = "wayland";
+    WLR_DRM_DEVICES = "/dev/dri/card0";
+    WLR_RENDERER = "vulkan";
   };
 }

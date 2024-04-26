@@ -2,7 +2,15 @@
 
 {
   # Module installing brave as default browser
-  home.packages = [ pkgs.brave ];
+  home.packages = with pkgs; [
+    (brave.override {
+        commandLineArgs = ''
+          --ozone-platform=wayland \
+          --ozone-platform-hint
+        '';
+      }
+    )
+  ];
 
   xdg.mimeApps.defaultApplications = {
     "text/html" = "brave-browser.desktop";
