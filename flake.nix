@@ -12,7 +12,8 @@
         localeDefault = "en_US.UTF-8"; # i18 default locale
         localeSpecial = "de_DE.UTF-8"; # i18 special locale
         localeShort = "de"; # short locale identifier
-        bootMountPath = "/boot"; # mount path for efi boot partition; only used for uefi boot mode
+        bootMountPath = "/boot"; # mount path for efi boot partition;
+        cryptStorageUUID = ""; #
       };
 
       # ----- USER SETTINGS ----- #

@@ -13,16 +13,16 @@
     ../../system/hardware/opengl.nix
     ../../system/hardware/printing.nix
     ../../system/hardware/bluetooth.nix
-    ../../system/hardware/nvidia.nix
-    ../../system/wm/hyprland.nix
+    ../../system/hardware/nvidia.nix # nvidia driver
+    ../../system/wm/hyprland.nix # hyprland config
     #../../system/app/virtualization.nix
-    ../../system/security/doas.nix
+    ../../system/security/doas.nix # use doas instead of sudo
     ../../system/security/gpg.nix
     ../../system/security/firewall.nix
     ../../system/security/automount.nix
-    ../../system/style/stylix.nix
-    ../../system/app/gaming.nix
-    ./nfs-client.nix
+    ../../system/style/stylix.nix # theme engine
+    ../../system/app/gaming.nix # steam and lutris
+    ./nfs-client.nix # auto nfs mount
   ];
 
   # Fix nix path
@@ -38,14 +38,17 @@
   '';
 
   # Kernel modules
-  boot.kernelModules = [ "i2c-dev" "i2c-piix4" "cpufreq_powersave" ];
+  boot.kernelModules = [ "i2c-dev" "i2c-piix4" "cpufreq_powersave" "aesni_intel" "cryptd" ];
 
   # Bootloader
-  # Use systemd-boot if uefi, default to grub otherwise
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath; # does nothing if running bios rather than uefi
-  boot.loader.grub.enable = false;
+
+  # if a uuid is set, use LUKS
+  boot.initrd = lib.mkIf (systemSettings.cryptStorageUUID != "") {
+    luks.devices.cryptstorage.device = "/dev/disk/by-uuid/" + systemSettings.cryptStorageUUID;
+  };
 
   # Networking
   networking.hostName = systemSettings.hostname; # Define your hostname.
@@ -86,7 +89,7 @@
   users.users.${userSettings.username} = {
       isNormalUser = true;
       description = userSettings.name;
-      extraGroups = [ "networkmanager" "wheel" "input" "dialout" ];
+      extraGroups = [ "networkmanager" "wheel" "input" ];
       packages = [];
       uid = 1000;
   };

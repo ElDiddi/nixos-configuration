@@ -1,6 +1,25 @@
 #!/bin/sh
 
-DISK=/dev/nvme0n1
+while getopts d:l:p flag
+do
+    case "${flag}" in
+        d) DISK=${OPTARG};;
+        p) PWD=${OPTARG};;
+    esac
+done
+
+if [[ $DISK == "" ]]; then
+  echo "specify disk, e.g. /dev/nvme0n1";
+  exit
+fi
+
+PART1 = "$DISK"1
+PART2 = "$DISK"2
+
+if [[  $DISK == "/dev/nvme*" ]]; then
+  PART1 = "$DISK"p1
+  PART2 = "$DISK"p2
+fi
 
 sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk "$DISK"
   g # clear the in memory partition table
@@ -20,13 +39,20 @@ sed -e 's/\s*\([\+0-9a-zA-Z]*\).*/\1/' << EOF | fdisk "$DISK"
 EOF
 
 # Format /boot FAT32
-mkfs.fat -F 32 -n NIXBOOT "$DISK"p1
-# Format /root BTRFS
-mkfs.btrfs -L NIXROOT "$DISK"p2
+mkfs.fat -F 32 -n NIXBOOT $PART1
 
-mount "$DISK"p2 /mnt
+if [ $PWD != "" ]; then
+  # format the partition with the luks structure
+cryptsetup luksFormat $PART2
+$PWD
+fi
+
+# Format /root BTRFS
+mkfs.btrfs -L NIXROOT $PART2
+
+mount $PART2 /mnt
 mkdir -p /mnt/boot
-mount "$DISK"p1 /mnt/boot
+mount $PART1 /mnt/boot
 
 nixos-generate-config --root /mnt
 
