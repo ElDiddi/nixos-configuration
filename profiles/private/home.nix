@@ -46,6 +46,7 @@
 
     # Voice
     discord
+    vesktop
     teamspeak_client
 
     # Various dev packages

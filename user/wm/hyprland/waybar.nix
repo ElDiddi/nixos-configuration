@@ -16,9 +16,9 @@
 
         output = [ "DP-3" ]; # set waybar to main monitor only
 
-        modules-left = [ "custom/os" "pulseaudio" "pulseaudio#microphone" ];
+        modules-left = [ "custom/os" ];
         modules-center = [ ];
-        modules-right = [ "network" "custom/keybindhint" "clock" ];
+        modules-right = [ "network" "custom/keybindhint" "pulseaudio" "pulseaudio#microphone" "clock" ];
 
         "custom/os" = {
           format = " {} ";
@@ -81,8 +81,8 @@
           on-click-right = "networkmanager_dmenu && hyprctl dispatch bringactivetotop";
         };
         "custom/keybindhint" = {
-            format = " ";
-            on-click = userSettings.dotfilesDir + "/scripts/keybinds_hint.sh";
+          format = " ";
+          on-click = userSettings.dotfilesDir + "/scripts/keybinds_hint.sh";
         };
       };
     };

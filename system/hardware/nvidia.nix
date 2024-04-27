@@ -11,10 +11,12 @@
 
   environment.variables = {
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    __GL_VRR_ALLOWED = "1";
+    __GL_VRR_ALLOWED = 1;
+    __GL_SHADER_DISK_CACHE = "true";
+    __GL_GSYNC_ALLOWED = 1;
     GBM_BACKEND = "nvidia-drm";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    WLR_DRM_NO_ATOMIC = "1";
+    WLR_NO_HARDWARE_CURSORS = 1;
+    WLR_DRM_NO_ATOMIC = 1;
     LIBVA_DRIVER_NAME = "nvidia";
   };
 
