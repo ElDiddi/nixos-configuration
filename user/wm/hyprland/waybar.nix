@@ -16,9 +16,9 @@
 
         output = [ "DP-3" ]; # set waybar to main monitor only
 
-        modules-left = [ "custom/os" ];
+        modules-left = [ "custom/os" "pulseaudio" "pulseaudio#microphone" ];
         modules-center = [ ];
-        modules-right = ["network" "pulseaudio" "pulseaudio#microphone" "custom/keybindhint" "clock"];
+        modules-right = [ "network" "custom/keybindhint" "clock" ];
 
         "custom/os" = {
           format = " {} ";
@@ -44,7 +44,7 @@
           tooltip = false;
           format-muted = " Muted";
           on-click = "pamixer -t";
-          on-click-right = "pypr toggle volume && hyprctl dispatch bringactivetotop";
+          on-click-right = "pavucontrol -t 3 && hyprctl dispatch bringactivetotop";
           on-scroll-up = "pamixer -i 5";
           on-scroll-down = "pamixer -d 5";
           scroll-step= 5;
@@ -63,7 +63,7 @@
           format-source = " {volume}%";
           format-source-muted = " Muted";
           on-click = "pamixer --default-source -t";
-          on-click-right = "pypr toggle volume && hyprctl dispatch bringactivetotop";
+          on-click-right = "pavucontrol -t 4 && hyprctl dispatch bringactivetotop";
           on-scroll-up = "pamixer --default-source -i 5";
           on-scroll-down = "pamixer --default-source -d 5";
           scroll-step = 5;
@@ -96,12 +96,10 @@
         min-height: 0;
         transition: 0.3s;
       }
-
       window#waybar {
         background: rgba(21, 18, 27, 0);
         color: #cdd6f4;
       }
-
       tooltip {
         background: #1e1e2e;
         border-radius: 10px;
@@ -110,35 +108,29 @@
         border-color: #11111b;
         transition: 0.3s;
       }
-
       #workspaces button {
         padding: 5px;
         color: #313244;
         margin-right: 5px;
       }
-
       #workspaces button.active {
         color: #a6adc8;
       }
-
       #workspaces button.focused {
         color: #a6adc8;
         background: #eba0ac;
         border-radius: 20px;
       }
-
       #workspaces button.urgent {
         color: #11111b;
         background: #a6e3a1;
         border-radius: 20px;
       }
-
       #workspaces button:hover {
         background: #11111b;
         color: #cdd6f4;
         border-radius: 20px;
       }
-
       #custom-power_profile,
       #custom-weather,
       #window,
@@ -157,27 +149,20 @@
         margin: 0;
         margin-top: 5px;
         border: 1px solid #181825;
-      }
-
-      #temperature {
-        border-radius: 20px 0px 0px 20px;
-      }
-
-      #temperature.critical {
-        color: #eba0ac;
-      }
-
-      #backlight {
         border-radius: 20px 0px 0px 20px;
         padding-left: 7px;
       }
-
+      #temperature {
+        border-radius: 20px 0px 0px 20px;
+      }
+      #temperature.critical {
+        color: #eba0ac;
+      }
       #tray {
         border-radius: 20px;
         margin-right: 5px;
         padding: 0px 4px;
       }
-
       #workspaces {
         background: #1e1e2e;
         border-radius: 20px;
@@ -185,25 +170,21 @@
         padding-right: 0px;
         padding-left: 5px;
       }
-
       #custom-power_profile {
         color: #a6e3a1;
         border-left: 0px;
         border-right: 0px;
       }
-
       #custom-os {
         color: #'' + config.lib.stylix.colors.base07 + '';
         margin-top: 4px;
         font-size: 18px;
       }
-
       #window {
         border-radius: 20px;
         margin-left: 5px;
         margin-right: 5px;
       }
-
       #clock {
         color: #'' + config.lib.stylix.colors.base07 + '';
         border-radius: 20px;
@@ -212,26 +193,23 @@
         transition: 0.3s;
         padding-left: 7px;
       }
-
       #network {
         color: #'' + config.lib.stylix.colors.base07 + '';
         border-radius: 20px 0px 0px 20px;
         border-left: 0px;
         border-right: 0px;
       }
-
       #bluetooth {
         color: #89b4fa;
         border-radius: 20px;
         margin-right: 10px
       }
-
       #pulseaudio {
-        color: #89b4fa;
+        color: #'' + config.lib.stylix.colors.base07 + '';
         border-left: 0px;
         border-right: 0px;
+        border-radius: 20px 0px 0px 20px;
       }
-
       #pulseaudio.microphone {
         color: #'' + config.lib.stylix.colors.base07 + '';
         border-left: 0px;
@@ -240,18 +218,26 @@
         margin-right: 5px;
         padding-right: 8px;
       }
-
       #battery {
         color: #a6e3a1;
         border-radius: 0 20px 20px 0;
         margin-right: 5px;
         border-left: 0px;
       }
-
       #custom-weather {
         border-radius: 20px;
         border-right: 0px;
         margin-left: 0px;
+      }
+      #custom-keybindhint {
+        background-color: #1e1e2e;
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        margin-top: 5px;
+        border-left: 0px;
+        border-right: 0px;
+        margin-right: 5px;
+        padding-right: 8px;
+        border-radius: 0px 20px 20px 0px;
       }
     '';
   };

@@ -11,7 +11,6 @@
     ./fuzzel.nix
     ./hypridle.nix
     ./hyprlock.nix
-    ./pyprland.nix
     ./rofi.nix
     ./swappy.nix
     ./udiskie.nix
@@ -53,9 +52,8 @@
   exec-once = udiskie --no-automount --smart-tray # front-end that allows to manage removable media
   exec-once = nm-applet --indicator # systray app for Network/Wifi
 
-  exec-once = pypr
   exec-once = ydotoold
-  # exec-once = STEAM_FRAME_FORCE_CLOSE=1 steam -silent
+  exec-once = STEAM_FRAME_FORCE_CLOSE=1 steam -silent
   # exec-once = GOMAXPROCS=1 syncthing --no-browser
   # exec-once = hypridle
   # exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p

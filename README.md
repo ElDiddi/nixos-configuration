@@ -11,6 +11,7 @@
   - fnott     # notification daemon
   - fuzzel    # application launcher
   - hyprlock  # screen locking utility
+  - rofi      #
   - stylix    # theme manager
   - swappy    # screenshot tool
   - udiskie   # removable disk automounter
