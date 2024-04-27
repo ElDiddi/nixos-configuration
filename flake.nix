@@ -20,6 +20,7 @@
       userSettings = rec {
         username = "ld"; # username
         name = "ld"; # name/identifier
+        gitUsername = "ElDiddi"; # username
         email = "l.diederich@gmx.net"; # email (used for certain configurations)
         dotfilesDir = "/home/ld/.dotfiles"; # absolute path of the local repo
         theme = "catppuccin-mocha"; # selcted theme from themes directory (./themes/)
