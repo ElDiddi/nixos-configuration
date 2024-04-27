@@ -16,6 +16,7 @@
     gnugrep
     gnused
     hwinfo
+    jq
     killall
     libnotify
     neovim

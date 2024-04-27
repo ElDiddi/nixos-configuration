@@ -21,7 +21,7 @@
         username = "ld"; # username
         name = "ld"; # name/identifier
         email = "l.diederich@gmx.net"; # email (used for certain configurations)
-        dotfilesDir = "~/.dotfiles"; # absolute path of the local repo
+        dotfilesDir = "/home/ld/.dotfiles"; # absolute path of the local repo
         theme = "catppuccin-mocha"; # selcted theme from themes directory (./themes/)
         wm = "hyprland"; # Selected window manager or desktop environment; must select one in both ./user/wm/ and ./system/wm/
         # window manager type (hyprland or x11) translator

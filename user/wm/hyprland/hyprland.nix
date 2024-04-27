@@ -7,15 +7,16 @@
     (import ../../app/dmenu-scripts/networkmanager-dmenu.nix {
       dmenu_command = "fuzzel -d"; inherit config lib pkgs;
     })
+    ./fnott.nix
+    ./fuzzel.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./pyprland.nix
-    ./waybar.nix
-    ./fnott.nix
-    ./fuzzel.nix
-    ./udiskie.nix
-    ./wlogout.nix
+    ./rofi.nix
     ./swappy.nix
+    ./udiskie.nix
+    ./waybar.nix
+    ./wlogout.nix
     #./swaylock.nix
   ];
 
@@ -189,7 +190,6 @@
     pinentry-gnome3
     polkit_gnome
     qt6.qtwayland
-    rofi
     shared-mime-info
     slurp
     swaybg

@@ -1,4 +1,4 @@
-{ config, systemSettings, ... }:
+{ config, userSettings, systemSettings, ... }:
 
 {
   programs.waybar = {
@@ -18,7 +18,7 @@
 
         modules-left = [ "custom/os" ];
         modules-center = [ ];
-        modules-right = ["network" "pulseaudio" "pulseaudio#microphone" "clock"];
+        modules-right = ["network" "pulseaudio" "pulseaudio#microphone" "custom/keybindhint" "clock"];
 
         "custom/os" = {
           format = " {} ";
@@ -71,7 +71,6 @@
         network = {
           tooltip = true;
           format-wifi = " ";
-          rotate = 0;
           format-ethernet = "󰈀 ";
           tooltip-format = "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>";
           format-linked = "󰈀 {ifname} (No IP)";
@@ -80,6 +79,10 @@
           format-alt = "<span foreground='#b4befe'> {bandwidthDownBytes}</span> <span foreground='#b4befe'> {bandwidthUpBytes}</span>";
           interval = 2;
           on-click-right = "networkmanager_dmenu && hyprctl dispatch bringactivetotop";
+        };
+        "custom/keybindhint" = {
+            format = " ";
+            on-click = userSettings.dotfilesDir + "/scripts/keybinds_hint.sh";
         };
       };
     };

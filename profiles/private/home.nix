@@ -16,6 +16,7 @@
               ../../user/app/git/git.nix # Git config
               ../../user/app/keepass/keepass.nix # Password manager
               ../../user/app/browser/brave.nix # Default web browser
+              ../../user/app/vscode/vscode.nix #
               ../../user/app/virtualization/virtualization.nix # Virtual machines
               ../../user/style/stylix.nix # Styling and themes
               ../../user/lang/cc/cc.nix # C and C++ tools
@@ -36,7 +37,6 @@
     mate.atril
     openboard
     thunderbird
-    vscode
     xournalpp
 
     # Media
@@ -89,5 +89,6 @@
     SDL_VIDEODRIVER = "wayland";
     WLR_DRM_DEVICES = "/dev/dri/card0";
     WLR_RENDERER = "vulkan";
+    NIX_SCRCRIPTS = "${config.home.homeDirectory}/Media/Screenshots";
   };
 }

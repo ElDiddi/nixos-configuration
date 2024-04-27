@@ -76,7 +76,7 @@ in
   stylix.targets.kde.enable = true;
   stylix.targets.kitty.enable = true;
   stylix.targets.gtk.enable = true;
-  stylix.targets.rofi.enable = if (userSettings.wmType == "x11") then true else false;
+  stylix.targets.rofi.enable = true;
   stylix.targets.feh.enable = if (userSettings.wmType == "x11") then true else false;
   programs.feh.enable = true;
   home.file.".fehbg-stylix".text = ''

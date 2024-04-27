@@ -6,5 +6,7 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-# Rebuild system
-sudo nixos-rebuild switch --flake $SCRIPT_DIR#system;
+# Install and build home-manager configuration
+home-manager switch --flake ~/.dotfiles#user;
+
+$SCRIPT_DIR/sync-posthook.sh

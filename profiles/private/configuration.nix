@@ -44,11 +44,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = systemSettings.bootMountPath; # does nothing if running bios rather than uefi
-
-  # if a uuid is set, use LUKS
-  boot.initrd = lib.mkIf (systemSettings.cryptStorageUUID != "") {
-    luks.devices.cryptstorage.device = "/dev/disk/by-uuid/" + systemSettings.cryptStorageUUID;
-  };
+  boot.initrd.luks.devices.cryptstorage.device = "/dev/disk/by-uuid/2f838371-d463-4411-810a-2ff47703d1d3";
 
   # Networking
   networking.hostName = systemSettings.hostname; # Define your hostname.
