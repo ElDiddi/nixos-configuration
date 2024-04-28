@@ -24,7 +24,7 @@
               ../../user/lang/python/python.nix # python tools
               ../../user/lang/python/python-packages.nix # python tools
               ../../user/hardware/bluetooth.nix # Bluetooth
-            ];
+  ];
 
   home.stateVersion = "23.11"; # Please read the comment before changing.
 

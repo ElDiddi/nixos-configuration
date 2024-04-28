@@ -19,7 +19,6 @@
     jq
     killall
     libnotify
-    neovim
     nix-direnv
     pandoc
     pciutils

@@ -114,21 +114,6 @@
         "type": "github"
       }
     },
-    "emacs-pin-nixpkgs": {
-      "locked": {
-        "lastModified": 1711731143,
-        "narHash": "sha256-P3rID/C2N9+emVlCr4ta0X591usRvFxqk1wON/2j+Dg=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "f72123158996b8d4449de481897d855bc47c7bf6",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "rev": "f72123158996b8d4449de481897d855bc47c7bf6",
-        "type": "indirect"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -321,149 +306,12 @@
         "type": "github"
       }
     },
-    "org-krita": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1713038273,
-        "narHash": "sha256-ZoigcRMetn2ZY9uvcR3iLnPsf9ys2rHuUD9yv3+u7KM=",
-        "owner": "librephoenix",
-        "repo": "org-krita",
-        "rev": "9a1d917d2ee0fb7d2403186a0e6a15e23089c9fb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "librephoenix",
-        "repo": "org-krita",
-        "type": "github"
-      }
-    },
-    "org-nursery": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1703802001,
-        "narHash": "sha256-WreExyEdR1JH3E0V8oDPZZeqOWdT+4EqwgJebj8zIyc=",
-        "owner": "chrisbarrett",
-        "repo": "nursery",
-        "rev": "5cf0a462cd3cfc1410fe11710d947f4ff042cc5e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "chrisbarrett",
-        "repo": "nursery",
-        "type": "github"
-      }
-    },
-    "org-side-tree": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1706597780,
-        "narHash": "sha256-y7a/ouih5Jnug50OJHAv7S5BsfKSxMWoQ63t7cq7XrI=",
-        "owner": "localauthor",
-        "repo": "org-side-tree",
-        "rev": "62169a26edfafacd681ecaf84289dd6b58be6c32",
-        "type": "github"
-      },
-      "original": {
-        "owner": "localauthor",
-        "repo": "org-side-tree",
-        "type": "github"
-      }
-    },
-    "org-sliced-images": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1711408181,
-        "narHash": "sha256-ck3mGXtJJ0N8asGE4cRtWeJx5/iC+bTXw2cvZgePJqM=",
-        "owner": "jcfk",
-        "repo": "org-sliced-images",
-        "rev": "bd1141d6df6edfd9749c0bbf3a72836148c0e39d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jcfk",
-        "repo": "org-sliced-images",
-        "type": "github"
-      }
-    },
-    "org-timeblock": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1707720561,
-        "narHash": "sha256-aSZWSlKdYwx62h6cXCDHOyLJMG1/Ls9zANyTSG04AuA=",
-        "owner": "ichernyshovvv",
-        "repo": "org-timeblock",
-        "rev": "b423b01712b9c25dff3e4203c7cde736225f62ef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ichernyshovvv",
-        "repo": "org-timeblock",
-        "type": "github"
-      }
-    },
-    "org-xournalpp": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1625233179,
-        "narHash": "sha256-c0AYWMkBb7wdl7SWTffjWSXwXbq1PGov2vT8A1pdqpQ=",
-        "owner": "vherrmann",
-        "repo": "org-xournalpp",
-        "rev": "c09bd8b99d36c355d632b85ecbffb3b275802381",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "vherrmann",
-        "repo": "org-xournalpp",
-        "type": "gitlab"
-      }
-    },
-    "org-yaap": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1711640914,
-        "narHash": "sha256-eWoRaE10QPOPeE0TnHBn3o+Hz6fX0yDZnfrqVlj1De8=",
-        "owner": "tygrdev",
-        "repo": "org-yaap",
-        "rev": "fcf675382d914f369591052ddb8440cfc714ce74",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "tygrdev",
-        "repo": "org-yaap",
-        "type": "gitlab"
-      }
-    },
-    "phscroll": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1697087101,
-        "narHash": "sha256-LklBCgDYnC1SF2MD5LDI/CoQVSWlmrG83JGa155z4DI=",
-        "owner": "misohena",
-        "repo": "phscroll",
-        "rev": "582abedb4cf6aba216cdb5fe7217d612a1d68d5a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "misohena",
-        "repo": "phscroll",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "emacs-pin-nixpkgs": "emacs-pin-nixpkgs",
         "home-manager-stable": "home-manager-stable",
         "home-manager-unstable": "home-manager-unstable",
         "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable",
-        "org-krita": "org-krita",
-        "org-nursery": "org-nursery",
-        "org-side-tree": "org-side-tree",
-        "org-sliced-images": "org-sliced-images",
-        "org-timeblock": "org-timeblock",
-        "org-xournalpp": "org-xournalpp",
-        "org-yaap": "org-yaap",
-        "phscroll": "phscroll",
         "rust-overlay": "rust-overlay",
         "stylix": "stylix"
       }

@@ -33,33 +33,10 @@
         font = "Intel One Mono"; # Selected font
         fontPkg = pkgs.intel-one-mono; # Font package
         editor = "vim"; # Default editor;
-        # editor spawning translator
-        # generates a command that can be used to spawn editor inside a gui
-        # EDITOR and TERM session variables must be set in home.nix or other module
-        # I set the session variable SPAWNEDITOR to this in home.nix for convenience
-        spawnEditor = if (editor == "emacsclient") then
-                        "emacsclient -c -a 'emacs'"
-                      else
-                        (if ((editor == "vim") ||
-                             (editor == "nvim") ||
-                             (editor == "nano")) then
-                               "exec " + term + " -e " + editor
-                         else
-                           editor);
+        spawnEditor = "vim";
       };
 
-      # create patched nixpkgs
-      nixpkgs-patched =
-        (import inputs.nixpkgs { system = systemSettings.system; }).applyPatches {
-          name = "nixpkgs-patched";
-          src = inputs.nixpkgs;
-          patches = [ ./patches/emacs-no-version-check.patch ];
-        };
-
-      # configure pkgs
-      # use nixpkgs if running a server (homelab or worklab profile)
-      # otherwise use patched nixos-unstable nixpkgs
-      pkgs = import nixpkgs-patched {
+      pkgs = import inputs.nixpkgs {
         system = systemSettings.system;
         config = {
           allowUnfree = true;
@@ -76,21 +53,10 @@
         };
       };
 
-      pkgs-emacs = import inputs.emacs-pin-nixpkgs {
-        system = systemSettings.system;
-      };
-
-      pkgs-kdenlive = import inputs.kdenlive-pin-nixpkgs {
-        system = systemSettings.system;
-      };
-
       # configure lib
-      # use nixpkgs if running a server (homelab or worklab profile)
       # otherwise use patched nixos-unstable nixpkgs
       lib = inputs.nixpkgs.lib;
 
-      # use home-manager-stable if running a server (homelab or worklab profile)
-      # otherwise use home-manager-unstable
       home-manager = inputs.home-manager-unstable;
 
       # Systems that can run tests:
@@ -113,8 +79,6 @@
           extraSpecialArgs = {
             # pass config variables from above
             inherit pkgs-stable;
-            inherit pkgs-emacs;
-            inherit pkgs-kdenlive;
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
@@ -163,7 +127,6 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "nixpkgs/nixos-23.11";
-    emacs-pin-nixpkgs.url = "nixpkgs/f72123158996b8d4449de481897d855bc47c7bf6";
 
     home-manager-unstable.url = "github:nix-community/home-manager/master";
     home-manager-unstable.inputs.nixpkgs.follows = "nixpkgs";
@@ -171,41 +134,7 @@
     home-manager-stable.url = "github:nix-community/home-manager/release-23.11";
     home-manager-stable.inputs.nixpkgs.follows = "nixpkgs-stable";
 
-    org-nursery = {
-      url = "github:chrisbarrett/nursery";
-      flake = false;
-    };
-    org-yaap = {
-      url = "gitlab:tygrdev/org-yaap";
-      flake = false;
-    };
-    org-side-tree = {
-      url = "github:localauthor/org-side-tree";
-      flake = false;
-    };
-    org-timeblock = {
-      url = "github:ichernyshovvv/org-timeblock";
-      flake = false;
-    };
-    org-krita = {
-      url = "github:librephoenix/org-krita";
-      flake = false;
-    };
-    org-xournalpp = {
-      url = "gitlab:vherrmann/org-xournalpp";
-      flake = false;
-    };
-    org-sliced-images = {
-      url = "github:jcfk/org-sliced-images";
-      flake = false;
-    };
-    phscroll = {
-      url = "github:misohena/phscroll";
-      flake = false;
-    };
-
     stylix.url = "github:danth/stylix";
-
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
 }
