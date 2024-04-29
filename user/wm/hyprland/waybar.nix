@@ -18,7 +18,7 @@
 
         modules-left = [ "custom/os" ];
         modules-center = [ ];
-        modules-right = [ "network" "custom/keybindhint" "pulseaudio" "pulseaudio#microphone" "clock" ];
+        modules-right = [ "network" "bluetooth" "custom/keybindhint" "pulseaudio" "pulseaudio#microphone" "clock" ];
 
         "custom/os" = {
           format = " {} ";
@@ -83,6 +83,16 @@
         "custom/keybindhint" = {
           format = " ";
           on-click = userSettings.dotfilesDir + "/scripts/keybinds_hint.sh";
+        };
+        bluetooth = {
+          tooltip = true;
+          format = " ";
+          format-disabled = "󰂲 ";
+          format-connected = " {num_connections}";
+          tooltip-format = "{device_alias}";
+          tooltip-format-connected = " {device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}";
+          on-click = "blueman-manager && hyprctl dispatch bringactivetotop";
         };
       };
     };
@@ -198,11 +208,15 @@
         border-radius: 20px 0px 0px 20px;
         border-left: 0px;
         border-right: 0px;
+        padding-right: 3px;
+        padding-left: 10px;
       }
       #bluetooth {
-        color: #89b4fa;
-        border-radius: 20px;
-        margin-right: 10px
+        background-color: #1e1e2e;
+        color: #'' + config.lib.stylix.colors.base07 + '';
+        margin-right: 0px;
+        border-right: 0px;
+        border-radius: 0px 0px 0px 0px;
       }
       #pulseaudio {
         color: #'' + config.lib.stylix.colors.base07 + '';

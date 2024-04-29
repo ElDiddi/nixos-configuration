@@ -3,39 +3,29 @@
 {
   # Python packages
   home.packages = with pkgs.python3Packages; [
-      cffi
-      dbus-python
-      wheel
-      pyyaml
-      zipp
-      xlib
-      libvirt
-      pybind11
-      pyatspi
       attrs
       autocommand
       bcrypt
-      pycairo
       certifi
+      cffi
       chardet
       click
       cryptography
       cssselect
-      python-dateutil
+      dbus-python
       distro
       dnspython
       evdev
       ewmh
       fastjsonschema
       fido2
-      python-gnupg
-      pygobject3
       idna
       importlib-metadata
       inflect
       isodate
       jeepney
       keyring
+      libvirt
       lxml
       markdown
       markupsafe
@@ -52,18 +42,26 @@
       protonvpn-nm-lib
       psutil
       pulsectl
+      pyatspi
+      pybind11
+      pycairo
       pycparser
       pycups
       pycurl
       pydantic
+      pygobject3
       pyinotify
       pyopenssl
       pyparsing
       pyqt5
       pyqt5_sip
       pyscard
+      python-dateutil
+      python-gnupg
+      python-zbar
       pythondialog
       pyxdg
+      pyyaml
       rdflib
       requests
       secretstorage
@@ -75,6 +73,8 @@
       urllib3
       wcwidth
       websockets
-      python-zbar
+      wheel
+      xlib
+      zipp
   ];
 }

@@ -13,13 +13,13 @@
     fastfetch
     fd
     gnugrep
-    gnugrep
     gnused
     hwinfo
     jq
     killall
     libnotify
     nix-direnv
+    p7zip
     pandoc
     pciutils
     ripgrep
@@ -27,6 +27,7 @@
     unzip
     vim
     zoxide
+    zstd
     (pkgs.writeShellScriptBin "airplane-mode" ''
       #!/bin/sh
       connectivity="$(nmcli n connectivity)"
