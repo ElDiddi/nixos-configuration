@@ -17,6 +17,7 @@
               ../../user/app/keepass/keepass.nix # Password manager
               ../../user/app/browser/brave.nix # Default web browser
               ../../user/app/vscode/vscode.nix #
+              ../../user/app/neovim/neovim.nix #
               ../../user/app/virtualization/virtualization.nix # Virtual machines
               ../../user/style/stylix.nix # Styling and themes
               ../../user/lang/cc/cc.nix # C and C++ tools
